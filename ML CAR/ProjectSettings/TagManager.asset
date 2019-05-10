@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - wall
+  - target
+  - BL
+  - BR
+  - FL
+  - FR
   layers:
   - Default
   - TransparentFX
@@ -14,8 +20,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - Car
+  - Car Wheel
   - 
   - 
   - 
