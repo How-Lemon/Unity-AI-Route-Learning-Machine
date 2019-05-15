@@ -7,13 +7,41 @@ public class CarController : MonoBehaviour
     public GameObject skidMark;
     public Transform cameraPoint, mainCamera;
     public float speed;
+    public float ABSThreshold = 0.3f, RPMThreshold = 100;
+    public float carSpeed
+    {
+        get
+        {
+            if (rb)
+            {
+                return Vector3.Magnitude(rb.velocity);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+    }
+    public float trailDistance
+    {
+        get
+        {
+            return _trailDistance;
+        }
+    }
     private Rigidbody rb;
     private float startTime;
     public GameObject[] skidMarks = new GameObject[4];
     private WheelCollider[] wc = new WheelCollider[4];
     private GameObject[] slipping = new GameObject[4];
+    private bool[] breakable = new bool[4], slipWheel = new bool[4];
+    private float BreakForce = 0, EngineForce = 0;
+
+    private float _trailDistance = 0;
     void Start()
     {
+        BreakForce = GetComponent<CarAgent>().BreakForce;
+        EngineForce = GetComponent<CarAgent>().EngineForce;
         rb = gameObject.GetComponent<Rigidbody>();
         startTime = Time.time;
         wc[0] = GetComponent<CarAgent>().wheelBL;
@@ -31,6 +59,16 @@ public class CarController : MonoBehaviour
 
     void Update()
     {
+        UpdateTrailDistance();
+        CheckWheel();
+    }
+    void UpdateTrailDistance()
+    {
+        _trailDistance += Vector3.Magnitude(rb.velocity);
+    }
+
+    void CheckWheel()
+    {
         for (int i = 0; i < 4; i++)
         {
             WheelCollider wheel = wc[i];
@@ -39,9 +77,22 @@ public class CarController : MonoBehaviour
             if (wheel.GetGroundHit(out hit))
             {
 
-                if (hit.forwardSlip > 0.5 || hit.sidewaysSlip > 0.5)
+                if (Mathf.Abs(hit.forwardSlip) > 0.5 || Mathf.Abs(hit.sidewaysSlip) > 0.5)
                 {
                     pass = true;
+                }
+                if(Mathf.Abs(hit.forwardSlip) > 0.6){
+                    slipWheel[i] = true;
+                }else{
+                    slipWheel[i] = false;
+                }
+                if (Mathf.Abs(hit.forwardSlip) > ABSThreshold)
+                {
+                    breakable[i] = false;
+                }
+                else
+                {
+                    breakable[i] = true;
                 }
             }
             if (pass)
@@ -54,7 +105,8 @@ public class CarController : MonoBehaviour
                 }
                 else
                 {
-                    slipping[i].transform.position = hit.point;
+                    slipping[i].transform.position = new Vector3(hit.point.x, hit.point.y + 0.01f, hit.point.z);
+                    //slipping[i].transform.eulerAngles = Vector3.down;
                 }
 
             }
@@ -67,6 +119,29 @@ public class CarController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void PushBreak(float force)
+    {
+        wc[0].motorTorque = 0;
+        wc[1].motorTorque = 0;
+        
+        for (int i = 0; i < 4; i++)
+        {
+            if (breakable[i] || wc[i].rpm < RPMThreshold)
+            {
+                Debug.Log(wc[i].rpm);
+                wc[i].brakeTorque = BreakForce * force * -100;
+            }else{
+                wc[i].brakeTorque = 0;
+            }
+        }
+    }
+    public void PushGas(float force){
+        if(!slipWheel[0])wc[0].motorTorque = EngineForce * force;
+        if(!slipWheel[1])wc[1].motorTorque = EngineForce * force;
+        wc[2].brakeTorque = 0;
+        wc[3].brakeTorque = 0;
     }
 
 

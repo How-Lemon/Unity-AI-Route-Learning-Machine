@@ -13,6 +13,17 @@ public class CarAgent : Agent
     public float BreakForce = 1f;
     public float MaxSpeed = 2.5f;
     public float TurnSpeed = 1f;
+    public float forwardInput{
+        get{
+            return forwardAction;
+        }
+    }
+
+    public float sideInput{
+        get{
+            return sideAction;
+        }
+    }
     
     public WheelCollider wheelBL, wheelBR, wheelFL, wheelFR;
     public Transform Root;
@@ -21,9 +32,12 @@ public class CarAgent : Agent
     private Rigidbody carRigidbody;
     private float wheelTurned = 0.0f;
     private Transform origL, origR;
+    private float forwardAction,sideAction;
+    private CarController cc;
 
     private void Start()
     {
+        cc = GetComponent<CarController>();
         carRigidbody = gameObject.GetComponent<Rigidbody>();
         carStartPos = gameObject.transform.position;
         carRigidbody.mass = CarWeight;
@@ -40,14 +54,16 @@ public class CarAgent : Agent
         if (brain.brainParameters.vectorActionSpaceType == SpaceType.continuous)
         {
 
-            float forwardAction = vectorAction[1];
-            float sideAction = vectorAction[0];
+            forwardAction = vectorAction[1];
+            sideAction = vectorAction[0];
             if (forwardAction > 0)
             {
-                PushGas(forwardAction);
+                cc.PushGas(forwardAction);
+                //PushGas(forwardAction);
                 //gameObject.transform.position += new Vector3(actionX, 0, 0);
             }else if(forwardAction < 0){
-                PushBrake(forwardAction);
+                cc.PushBreak(forwardAction);
+                //PushBrake(forwardAction);
             }else if(forwardAction == 0){
                 ResetMotor();
             }
@@ -101,6 +117,13 @@ public class CarAgent : Agent
         wheelFL.brakeTorque = BreakForce * force * -100;
         wheelFR.brakeTorque = BreakForce * force * -100;
     }
+    public void Reset(){
+        PushBrake(1);
+        ResetMotor();
+        ResetTurn();
+        carRigidbody.velocity = Vector3.zero;
+        AgentReset();
+    }
 
     private void ResetMotor(){
         wheelBL.brakeTorque = 0;
@@ -128,6 +151,6 @@ public class CarAgent : Agent
 
      public override void AgentReset()
     {
-        gameObject.transform.position = carStartPos;
+        //gameObject.transform.position = carStartPos;
     }
 }
