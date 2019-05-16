@@ -43,7 +43,7 @@ public class StatMonitor : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rpm.text = string.Format("Speed: {0:0.00} m/U", CarController.carSpeed);
+        rpm.text = string.Format("Speed: {0:0.00} kph", CarController.carSpeed * 3.6);
         distance.text = string.Format("Progress: {0:0.00} m", map.GetDistance());
         CheckInput();
         CheckWheel();
