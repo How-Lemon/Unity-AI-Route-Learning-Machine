@@ -34,6 +34,7 @@ public class CarAgent : Agent
     private Transform origL, origR;
     private float forwardAction,sideAction;
     private CarController cc;
+    private RayPerception3D rayPerception;
 
     private void Start()
     {
@@ -41,12 +42,22 @@ public class CarAgent : Agent
         carRigidbody = gameObject.GetComponent<Rigidbody>();
         carStartPos = gameObject.transform.position;
         carRigidbody.mass = CarWeight;
+        rayPerception = GetComponent<RayPerception3D>();
     }
 
     public override void CollectObservations()
     {
-        AddVectorObs(gameObject.transform.position.x);
-        AddVectorObs(gameObject.transform.position.z);
+
+        // Add raycast perception observations for stumps and walls
+        float rayDistance = 50f;
+        float[] rayAngles = { 90f };
+        string[] detectableObjects = { "wall" };
+        AddVectorObs(rayPerception.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
+
+        // Add velocity observation
+        Vector3 localVelocity = transform.InverseTransformDirection(carRigidbody.velocity);
+        AddVectorObs(localVelocity.x);
+        AddVectorObs(localVelocity.z);
     }
 
     public override void AgentAction(float[] vectorAction, string textAction)
@@ -54,15 +65,16 @@ public class CarAgent : Agent
         if (brain.brainParameters.vectorActionSpaceType == SpaceType.continuous)
         {
 
-            forwardAction = vectorAction[1];
-            sideAction = vectorAction[0];
-            if (forwardAction > 0)
+            forwardAction = vectorAction[0];
+            sideAction = vectorAction[1];
+            if (forwardAction == 1)
             {
                 cc.PushGas(forwardAction);
                 //PushGas(forwardAction);
                 //gameObject.transform.position += new Vector3(actionX, 0, 0);
-            }else if(forwardAction < 0){
-                cc.PushBreak(forwardAction);
+            }else if(forwardAction == 2){
+
+                cc.PushBreak(-1);
                 //PushBrake(forwardAction);
             }else if(forwardAction == 0){
                 ResetMotor();
@@ -70,24 +82,43 @@ public class CarAgent : Agent
 
             if (sideAction != 0)
             {
-                TurnWheel(sideAction);
-            }else{
+                if (sideAction == 1)
+                {
+                    TurnWheel(sideAction);
+                }
+                else
+                {
+                    TurnWheel(-1);
+                }
+                
+            }
+            else {
                 ResetTurn();
             }
+        }
+
+        if (GetCumulativeReward() <= -5f)
+        {
+            Done();
+            Reset();
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("target"))
+        if (collision.gameObject.CompareTag("checkPoint"))
         {
-            Debug.Log("get target");
-            Done();
-            AddReward(1f);
+            Debug.Log("go through check point");
+            Debug.Log(GetCumulativeReward());
+            AddReward(.5f);
         }
         else if (collision.gameObject.CompareTag("wall"))
         {
             AddReward(-.01f);
+        }
+        else
+        {
+            AddReward(-.001f);
         }
     }
 

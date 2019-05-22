@@ -11760,6 +11760,24 @@ PrefabInstance:
       objectReference: {fileID: 1864821616}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c01d37cd34f82d4695bc836b275aa68, type: 3}
+--- !u!1 &461238577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6955977140693926078, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 951265905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &461238578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461238577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb172294dbbcc408286b156a2c4b553c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &603512561
 GameObject:
   m_ObjectHideFlags: 0
@@ -11974,7 +11992,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 951265905}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 461238577}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 399f4c24090876f409046606ff7204be, type: 3}
@@ -11986,7 +12004,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 951265905}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 461238577}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 646333ea390885340b8d73547af865e8, type: 3}
@@ -12098,6 +12116,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: CAR
       objectReference: {fileID: 0}
+    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1952307421}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 27b217e17569311468a04418482b459f,
+        type: 2}
     - target: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12153,11 +12182,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1952307421}
     - target: {fileID: 131969017460736196, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: maxRange
@@ -12291,7 +12315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1810624619}
-  - component: {fileID: 1810624618}
+  - component: {fileID: 1810624620}
   m_Layer: 0
   m_Name: Academy
   m_TagString: Untagged
@@ -12299,37 +12323,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1810624618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810624617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fee1f0f1bd80a74bb22a764aa7185eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  broadcastHub:
-    broadcastingBrains:
-    - {fileID: 11400000, guid: e230e89f392ba7b4b9b6f908911442e4, type: 2}
-    _brainsToControl: []
-  maxSteps: 10000
-  trainingConfiguration:
-    width: 80
-    height: 80
-    qualityLevel: 1
-    timeScale: 100
-    targetFrameRate: -1
-  inferenceConfiguration:
-    width: 1280
-    height: 720
-    qualityLevel: 5
-    timeScale: 1
-    targetFrameRate: 60
-  resetParameters:
-    resetParameters: []
 --- !u!4 &1810624619
 Transform:
   m_ObjectHideFlags: 0
@@ -12344,6 +12337,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1810624620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810624617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a2e01174bbb88419dc26228436f004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  broadcastHub:
+    broadcastingBrains:
+    - {fileID: 11400000, guid: f8ce82db5b189554ba7b8d0a84d87ddf, type: 2}
+    - {fileID: 11400000, guid: 27b217e17569311468a04418482b459f, type: 2}
+    _brainsToControl:
+    - {fileID: 11400000, guid: 27b217e17569311468a04418482b459f, type: 2}
+  maxSteps: 20000
+  trainingConfiguration:
+    width: 80
+    height: 80
+    qualityLevel: 1
+    timeScale: 5
+    targetFrameRate: -1
+  inferenceConfiguration:
+    width: 1280
+    height: 720
+    qualityLevel: 5
+    timeScale: 1
+    targetFrameRate: 60
+  resetParameters:
+    resetParameters: []
 --- !u!1 &1864821616
 GameObject:
   m_ObjectHideFlags: 0
