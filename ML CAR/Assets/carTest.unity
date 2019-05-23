@@ -11758,6 +11758,11 @@ PrefabInstance:
       propertyPath: progressPointDB
       value: 
       objectReference: {fileID: 1864821616}
+    - target: {fileID: 7588551996543600154, guid: 5c01d37cd34f82d4695bc836b275aa68,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c01d37cd34f82d4695bc836b275aa68, type: 3}
 --- !u!1 &461238577 stripped
@@ -12393,7 +12398,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &1864821617
 SphereCollider:
   m_ObjectHideFlags: 0
