@@ -7,7 +7,7 @@ public class CarAgent : Agent
 {
 
     [Header("Car Agent Settings")]
-    public GameObject target;
+    public Map map;
     public float CarWeight = 100;
     public float EngineForce = 1f;
     public float BreakForce = 1f;
@@ -30,9 +30,24 @@ public class CarAgent : Agent
     public Transform RootL, RootR;
 
     public GameObject rangeFinderContainer;
-    
-    [HideInInspector]
-    public int checkPointPassed = 0;
+    public int maxCheckPoint;
+    public int checkPointPassedInLap{
+        get{
+            return _cppl;
+        }
+        private set{
+            _cppl = value;
+        }
+    }
+    private int _cppl = 0;
+
+    public float carPorgress{
+        get{
+            return map.GetCarProgress(transform.position, checkPointPassedInLap) + _laps * map.trackLength;
+        }
+    }
+    private int _laps = 0;
+    private float _prog = 0;
 
     Vector3 carStartPos;
     private Rigidbody carRigidbody;
@@ -197,6 +212,24 @@ public class CarAgent : Agent
         wheelFR.steerAngle = TurnSpeed * force;
         RootL.transform.eulerAngles = new Vector3(RootL.parent.transform.eulerAngles.x,RootL.parent.transform.eulerAngles.y + TurnSpeed * force,RootL.parent.transform.eulerAngles.z);
         RootR.transform.eulerAngles = new Vector3(RootL.parent.transform.eulerAngles.x,RootL.parent.transform.eulerAngles.y+TurnSpeed * force,RootL.parent.transform.eulerAngles.z);
+
+    }
+
+    public void PassCheckPoint(int checkPointID)//is called When the car passed a checkpoint
+    {
+        
+        if(checkPointID >= map.GetMaxCheckPointIndex){
+            checkPointPassedInLap = 0;
+            _laps ++;
+        }else if(checkPointID < checkPointPassedInLap){
+            Fail();
+        }else{
+            checkPointPassedInLap = checkPointID;
+        }
+    }
+
+    public void Fail()//Things to do when failed
+    {
 
     }
 

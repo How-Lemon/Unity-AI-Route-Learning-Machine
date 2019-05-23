@@ -18,6 +18,7 @@ public class StatMonitor : MonoBehaviour
     public GameObject rangeFindersContainer, rangeFinderTexts;
     public Map map;
     public GameObject textInstance;
+    
     private Image[] wheelMonitor;
     private WheelCollider[] wc = new WheelCollider[4];
     private RangeFinder[] rangefinders;
@@ -44,7 +45,7 @@ public class StatMonitor : MonoBehaviour
     void FixedUpdate()
     {
         rpm.text = string.Format("Speed: {0:0.00} kph", CarController.carSpeed * 3.6);
-        distance.text = string.Format("Progress: {0:0.00} m", map.GetDistance());
+        distance.text = string.Format("Progress: {0:0.00} m", car.carPorgress);
         CheckInput();
         CheckWheel();
         StartCoroutine(CheckRangeFinders());

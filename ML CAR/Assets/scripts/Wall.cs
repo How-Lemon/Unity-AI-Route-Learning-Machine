@@ -34,7 +34,7 @@ public class Wall : MonoBehaviour
         }else{
             if (collision.gameObject.tag == "car")
             {
-                map.Failed();
+                //map.Failed();
             }
         }
 

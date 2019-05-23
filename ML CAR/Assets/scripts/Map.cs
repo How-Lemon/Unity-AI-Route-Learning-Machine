@@ -6,7 +6,7 @@ public class Map : MonoBehaviour
 {
     public GameObject[] checkPoints;
     public GameObject[] walls;
-    public GameObject car, progressPointDB;
+    public GameObject progressPointDB;
     public float trackLength
     {
         get
@@ -26,9 +26,16 @@ public class Map : MonoBehaviour
             return _laps;
         }
     }
+    public int GetMaxCheckPointIndex
+    {
+        get
+        {
+            return maxCheckPoint - 1;
+        }
+    }
     private float _trackLength = -1, lapProgress = 0;
     private int _laps;
-
+    private GameObject[] cars;
     private List<float> segmentLength;
 
     private int maxCheckPoint, checkPointPassed = 0;
@@ -36,33 +43,35 @@ public class Map : MonoBehaviour
     void Start()
     {
         segmentLength = new List<float>();
-        if (checkPoints.Length == 0)
+        if (checkPoints.Length == 0)// Get ALL checkpoints
         {
             checkPoints = GameObject.FindGameObjectsWithTag("checkPoint");
         }
-        if (walls.Length == 0)
+        if (walls.Length == 0)//Get All WALLS
         {
             walls = GameObject.FindGameObjectsWithTag("wall");
         }
-        foreach (GameObject go in checkPoints)
+        for (int i = 0; i < checkPoints.Length; i++)//Set all checkpoints
         {
-            go.GetComponent<Collider>().isTrigger = true;
-            go.GetComponent<CheckPoint>().map = this;
-            go.SetActive(false);
+            checkPoints[i].GetComponent<Collider>().isTrigger = true;
+            checkPoints[i].GetComponent<MeshRenderer>().enabled = false;
+            checkPoints[i].GetComponent<CheckPoint>().map = this;
+            checkPoints[i].GetComponent<CheckPoint>().order = i;
+            checkPoints[i].GetComponent<CheckPoint>().isLast = (i == (checkPoints.Length - 1));
+            checkPoints[i].SetActive(true);
         }
-        foreach (GameObject go in walls)
+        foreach (GameObject go in walls)//Activate All Walls
         {
             go.GetComponent<Wall>().map = this;
             go.GetComponent<Wall>().SetPlayMode();
         }
-        if (car == null)
+        cars = GameObject.FindGameObjectsWithTag("car");
+        foreach (GameObject car in cars)
         {
-            car = GameObject.FindGameObjectWithTag("car");
+            car.GetComponent<CarAgent>().map = this;
             car.transform.position = checkPoints[0].transform.position;
             car.transform.rotation = checkPoints[0].transform.rotation;
         }
-
-        checkPoints[0].SetActive(true);
         maxCheckPoint = checkPoints.Length;
         _trackLength = CalculateTrackLength();
     }
@@ -70,72 +79,72 @@ public class Map : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reset();
-        }
-        GetDistance();
     }
 
-    public void Failed()
+    public void CallCarFailed(GameObject car)
     {
-        Debug.Log("RUN FAILED!!!");
+
     }
 
-    public void Success()
-    {
-        Debug.Log("YAY");
-        _laps++;
-        Reset();
-    }
-
-    public void Reset()
-    {
-        checkPoints[checkPointPassed - 1].SetActive(false);
-        checkPoints[0].SetActive(true);
-        checkPointPassed = 0;
-        car.GetComponent<CarAgent>().Reset();
+    public void PassGoal(GameObject car)
+    {//Reset the position of the last car
         car.transform.position = checkPoints[0].transform.position;
         car.transform.rotation = checkPoints[0].transform.rotation;
-
+        car.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
-    public void Pass(GameObject checkPoint)
+    public float GetCarProgress(Vector3 position, int recentCheckPoint)//Get Current Progress in lap; return lap length if is at goal
     {
-        if (++checkPointPassed >= maxCheckPoint)
+        float output = 0.0f;
+        if (recentCheckPoint >= maxCheckPoint)
         {
-            Success();
+            return trackLength;
         }
-        else
-        {
-            checkPoints[checkPointPassed - 1].SetActive(false);
-            checkPoints[checkPointPassed].SetActive(true);
-            if (checkPointPassed > 1) lapProgress += segmentLength[checkPointPassed - 2];
-        }
-    }
-
-    public float GetDistance()
-    {//Get the distance Traveled
-        if (checkPointPassed >= maxCheckPoint || checkPointPassed == 0)
-        {
-            return lapProgress;
-        };
         //Get current segment
-        Vector3 now = checkPoints[checkPointPassed - 1].transform.position, next = checkPoints[checkPointPassed].transform.position;
-        Vector3 progressPoint = ClosestPointOnLine(now, next, car.transform.position);
-        float output = 0;
-        if (progressPoint == now && checkPointPassed > 1)
+        Vector3 now = checkPoints[recentCheckPoint].transform.position, next = checkPoints[recentCheckPoint + 1].transform.position;
+        Vector3 progressPoint = ClosestPointOnLine(now, next, position);
+        if (progressPoint == now && recentCheckPoint >= 1)
         {
-            progressPoint = ClosestPointOnLine(checkPoints[checkPointPassed - 2].transform.position, checkPoints[checkPointPassed - 1].transform.position, car.transform.position);
-            if (progressPoint == checkPoints[checkPointPassed - 2].transform.position) Failed();
-            output = lapProgress - segmentLength[checkPointPassed - 2] + Vector3.Magnitude(progressPoint - checkPoints[checkPointPassed - 2].transform.position);
+            progressPoint = ClosestPointOnLine(checkPoints[recentCheckPoint - 1].transform.position, checkPoints[recentCheckPoint].transform.position, position);
+            output = GetLapProgress(recentCheckPoint) + Vector3.Magnitude(progressPoint - checkPoints[recentCheckPoint - 1].transform.position);
         }
         else
         {
-            progressPoint = ClosestPointOnLine(now, next, car.transform.position);
-            output = lapProgress + Vector3.Magnitude(progressPoint - now);
+            progressPoint = ClosestPointOnLine(now, next, position);
+            output = GetLapProgress(recentCheckPoint + 1) + Vector3.Magnitude(progressPoint - now);
         }
         progressPointDB.transform.position = progressPoint;
+        return output;
+    }
+
+    private float[] _tlLength = null;
+    private float GetLapProgress(int checkPoint)
+    {
+         if (_tlLength == null)
+        {
+            _tlLength = new float[maxCheckPoint];
+            for (int i = 0; i < _tlLength.Length; i++)
+            {
+                _tlLength[i] = -1f;
+            }
+            _tlLength[0] = 0f;
+        }
+        if (checkPoint <= 0) return 0f;
+        float output = 0f;
+        Debug.Log(checkPoint);
+        if (_tlLength[checkPoint - 1] == -1f)
+        {
+            for (int i = 0; i < checkPoint - 1; i++)
+            {
+                output += segmentLength[i];
+            }
+            _tlLength[checkPoint - 1] = output;
+        }
+        else
+        {
+            output = _tlLength[checkPoint - 1];
+        }
+
         return output;
     }
     private float CalculateTrackLength()
