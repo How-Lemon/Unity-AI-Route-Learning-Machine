@@ -78,12 +78,12 @@ public class StatMonitor : MonoBehaviour
 
     void CheckInput()
     {
-        if (car.forwardInput > 0)
+        if (car.forwardInput == 1)
         {
             keyUp.color = Color.red;
             keyDown.color = Color.white;
         }
-        else if (car.forwardInput < 0)
+        else if (car.forwardInput == 2)
         {
             keyUp.color = Color.white;
             keyDown.color = Color.red;
@@ -93,12 +93,12 @@ public class StatMonitor : MonoBehaviour
             keyUp.color = Color.white;
             keyDown.color = Color.white;
         }
-        if (car.sideInput < 0)
+        if (car.sideInput == 2)
         {
             keyLeft.color = Color.red;
             keyRight.color = Color.white;
         }
-        else if (car.sideInput > 0)
+        else if (car.sideInput == 1)
         {
             keyLeft.color = Color.white;
             keyRight.color = Color.red;

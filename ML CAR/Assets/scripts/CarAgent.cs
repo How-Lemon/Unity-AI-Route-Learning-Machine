@@ -28,17 +28,29 @@ public class CarAgent : Agent
     public WheelCollider wheelBL, wheelBR, wheelFL, wheelFR;
     public Transform Root;
     public Transform RootL, RootR;
+
+    public GameObject rangeFinderContainer;
+    
+    [HideInInspector]
+    public int checkPointPassed = 0;
+
     Vector3 carStartPos;
     private Rigidbody carRigidbody;
     private float wheelTurned = 0.0f;
     private Transform origL, origR;
     private float forwardAction,sideAction;
     private CarController cc;
+
     private RayPerception3D rayPerception;
+    private RangeFinder[] rangeFinders;
+    private WheelCollider[] wcs;
 
     private void Start()
     {
+        rangeFinders = rangeFinderContainer.GetComponentsInChildren<RangeFinder>();
+        
         cc = GetComponent<CarController>();
+        wcs = new WheelCollider[]{wheelBL, wheelBR, wheelFL, wheelFR};
         carRigidbody = gameObject.GetComponent<Rigidbody>();
         carStartPos = gameObject.transform.position;
         carRigidbody.mass = CarWeight;
@@ -47,17 +59,25 @@ public class CarAgent : Agent
 
     public override void CollectObservations()
     {
-
-        // Add raycast perception observations for stumps and walls
-        float rayDistance = 50f;
-        float[] rayAngles = { 90f };
-        string[] detectableObjects = { "wall" };
-        AddVectorObs(rayPerception.Perceive(rayDistance, rayAngles, detectableObjects, 0f, 0f));
-
+        //Rangefinder detected Ranges
+        foreach (RangeFinder item in rangeFinders)// 7 items
+        {
+            AddVectorObs(item.range);
+        }
+        //Car Speed
+        AddVectorObs(cc.carSpeed);
+        //Wheel Slip
+        foreach (WheelCollider wheel in wcs) // 8 items
+        {
+            WheelHit hit;
+            wheel.GetGroundHit(out hit);
+            AddVectorObs(hit.forwardSlip);
+            AddVectorObs(hit.sidewaysSlip);
+        }
         // Add velocity observation
         Vector3 localVelocity = transform.InverseTransformDirection(carRigidbody.velocity);
-        AddVectorObs(localVelocity.x);
-        AddVectorObs(localVelocity.z);
+        AddVectorObs(localVelocity.x); // 1 item
+        AddVectorObs(localVelocity.z); // 1 item
     }
 
     public override void AgentAction(float[] vectorAction, string textAction)

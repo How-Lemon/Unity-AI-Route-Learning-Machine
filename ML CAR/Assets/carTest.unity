@@ -12065,7 +12065,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 85.49
+  far clip plane: 1000
   field of view: 60
   orthographic: 1
   orthographic size: 98.28406
@@ -12125,8 +12125,13 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 27b217e17569311468a04418482b459f,
+      objectReference: {fileID: 11400000, guid: 02d2aaaaf38dc3e42b7a7dd5a64933ae,
         type: 2}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: rangeFinderContainer
+      value: 
+      objectReference: {fileID: 1766172443}
     - target: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12351,10 +12356,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   broadcastHub:
     broadcastingBrains:
-    - {fileID: 11400000, guid: f8ce82db5b189554ba7b8d0a84d87ddf, type: 2}
-    - {fileID: 11400000, guid: 27b217e17569311468a04418482b459f, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
     _brainsToControl:
-    - {fileID: 11400000, guid: 27b217e17569311468a04418482b459f, type: 2}
+    - {fileID: 0}
   maxSteps: 20000
   trainingConfiguration:
     width: 80
@@ -12512,7 +12517,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 79.9
+  far clip plane: 80
   field of view: 60
   orthographic: 0
   orthographic size: 5

@@ -130,7 +130,7 @@ public class CarController : MonoBehaviour
         {
             if (breakable[i] || wc[i].rpm < RPMThreshold)
             {
-                Debug.Log(wc[i].rpm);
+                //Debug.Log(wc[i].rpm);
                 wc[i].brakeTorque = BreakForce * force * -100;
             }else{
                 wc[i].brakeTorque = 0;
