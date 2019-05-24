@@ -25,6 +25,9 @@ public class CarAgent : Agent
         }
     }
     
+    //previous distance
+    private float previous = 0f;
+
     public WheelCollider wheelBL, wheelBR, wheelFL, wheelFR;
     public Transform Root;
     public Transform RootL, RootR;
@@ -137,19 +140,28 @@ public class CarAgent : Agent
         if (GetCumulativeReward() <= -5f)
         {
             Done();
-            Reset();
+            Fail();
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if ((carPorgress-previous)/10 != 0)
+        {
+            AddReward((carPorgress - previous) * 0.001f);
+            previous = carPorgress;
+        }
         if (collision.gameObject.CompareTag("checkPoint"))
         {
-            
+            Debug.Log("go through check point");
+            Debug.Log(GetCumulativeReward());
+            AddReward(.1f);
         }
         else if (collision.gameObject.CompareTag("wall"))
         {
+            AddReward(-.05f);
             Fail();
+            Debug.Log("hitting wall");
         }
         else
         {
@@ -157,7 +169,10 @@ public class CarAgent : Agent
         }
     }
 
-
+    private void Update()
+    {
+        
+    }
 
     private void PushGas()
     {
@@ -223,7 +238,6 @@ public class CarAgent : Agent
 
     public void PassCheckPoint(int checkPointID)//is called When the car passed a checkpoint
     {
-        
         if(checkPointID >= map.GetMaxCheckPointIndex){
             Debug.Log("go through Goal");
             Debug.Log(GetCumulativeReward());
