@@ -69,8 +69,11 @@ public class Map : MonoBehaviour
         foreach (GameObject car in cars)
         {
             car.GetComponent<CarAgent>().map = this;
-            car.transform.position = checkPoints[0].transform.position;
-            car.transform.rotation = checkPoints[0].transform.rotation;
+            car.GetComponent<CarAgent>().carStartPos = checkPoints[0].transform.position;
+            car.GetComponent<CarAgent>().carStartRotation = checkPoints[0].transform.rotation;
+            car.GetComponent<CarAgent>().Reset();
+            //car.transform.position = checkPoints[0].transform.position;
+            //car.transform.rotation = checkPoints[0].transform.rotation;
         }
         maxCheckPoint = checkPoints.Length;
         _trackLength = CalculateTrackLength();

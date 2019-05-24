@@ -43,13 +43,15 @@ public class CarAgent : Agent
 
     public float carPorgress{
         get{
-            return map.GetCarProgress(transform.position, checkPointPassedInLap) + _laps * map.trackLength;
+            return map.GetCarProgress(transform.position, checkPointPassedInLap) + laps * map.trackLength;
         }
     }
-    private int _laps = 0;
-    private float _prog = 0;
+    private int laps = 0;
 
-    Vector3 carStartPos;
+    [HideInInspector]
+    public Vector3 carStartPos;
+    public Quaternion carStartRotation;
+    private Vector3 _carStartPos;
     private Rigidbody carRigidbody;
     private float wheelTurned = 0.0f;
     private Transform origL, origR;
@@ -143,19 +145,19 @@ public class CarAgent : Agent
     {
         if (collision.gameObject.CompareTag("checkPoint"))
         {
-            Debug.Log("go through check point");
-            Debug.Log(GetCumulativeReward());
-            AddReward(.5f);
+            
         }
         else if (collision.gameObject.CompareTag("wall"))
         {
-            AddReward(-.01f);
+            Fail();
         }
         else
         {
             AddReward(-.001f);
         }
     }
+
+
 
     private void PushGas()
     {
@@ -187,7 +189,11 @@ public class CarAgent : Agent
         PushBrake(1);
         ResetMotor();
         ResetTurn();
+        gameObject.transform.position = carStartPos;
+        gameObject.transform.rotation = carStartRotation;
         carRigidbody.velocity = Vector3.zero;
+        laps = 0;
+        checkPointPassedInLap = 0;
         AgentReset();
     }
 
@@ -219,22 +225,30 @@ public class CarAgent : Agent
     {
         
         if(checkPointID >= map.GetMaxCheckPointIndex){
+            Debug.Log("go through Goal");
+            Debug.Log(GetCumulativeReward());
+            AddReward(.5f);
             checkPointPassedInLap = 0;
-            _laps ++;
+            laps ++;
         }else if(checkPointID < checkPointPassedInLap){
             Fail();
         }else{
+            Debug.Log("go through check point");
+            Debug.Log(GetCumulativeReward());
+            AddReward(.5f);
             checkPointPassedInLap = checkPointID;
         }
     }
 
     public void Fail()//Things to do when failed
     {
-
+        Reset();
     }
+
 
      public override void AgentReset()
     {
         //gameObject.transform.position = carStartPos;
     }
+
 }
