@@ -12130,7 +12130,7 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 02d2aaaaf38dc3e42b7a7dd5a64933ae,
+      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
         type: 2}
     - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
@@ -12361,10 +12361,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   broadcastHub:
     broadcastingBrains:
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 02d2aaaaf38dc3e42b7a7dd5a64933ae, type: 2}
+    - {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934, type: 2}
     _brainsToControl:
     - {fileID: 0}
+    - {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934, type: 2}
   maxSteps: 20000
   trainingConfiguration:
     width: 80

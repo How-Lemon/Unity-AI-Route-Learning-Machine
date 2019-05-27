@@ -75,6 +75,7 @@ public class CarAgent : Agent
         carStartPos = gameObject.transform.position;
         carRigidbody.mass = CarWeight;
         rayPerception = GetComponent<RayPerception3D>();
+        AddReward(-.5f);
     }
 
     public override void CollectObservations()
@@ -102,9 +103,8 @@ public class CarAgent : Agent
 
     public override void AgentAction(float[] vectorAction, string textAction)
     {
-        if (brain.brainParameters.vectorActionSpaceType == SpaceType.continuous)
+        if (brain.brainParameters.vectorActionSpaceType == SpaceType.discrete)
         {
-
             forwardAction = vectorAction[0];
             sideAction = vectorAction[1];
             if (forwardAction == 1)
@@ -130,7 +130,6 @@ public class CarAgent : Agent
                 {
                     TurnWheel(-1);
                 }
-                
             }
             else {
                 ResetTurn();
@@ -146,11 +145,6 @@ public class CarAgent : Agent
 
     private void OnCollisionEnter(Collision collision)
     {
-        if ((carPorgress-previous)/10 != 0)
-        {
-            AddReward((carPorgress - previous) * 0.001f);
-            previous = carPorgress;
-        }
         if (collision.gameObject.CompareTag("checkPoint"))
         {
             Debug.Log("go through check point");
@@ -159,24 +153,25 @@ public class CarAgent : Agent
         }
         else if (collision.gameObject.CompareTag("wall"))
         {
+            Debug.Log("hitting wall");
             AddReward(-.05f);
             Fail();
-            Debug.Log("hitting wall");
-        }
-        else
-        {
-            AddReward(-.001f);
         }
     }
 
     private void Update()
     {
-        
+        if ((carPorgress - previous) / 10 != 0)
+        {
+            AddReward((carPorgress - previous) * .01f);
+            previous = carPorgress;
+        }
+        AddReward(-.0001f);
+        Debug.Log(GetCumulativeReward());
     }
 
     private void PushGas()
     {
-       
         PushGas(1f);
     }
 

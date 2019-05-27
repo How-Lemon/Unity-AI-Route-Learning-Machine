@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: CarBrain_Learning
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 5
-    numStackedVectorObservations: 20
-    vectorActionSize: 02000000
+    vectorObservationSize: 18
+    numStackedVectorObservations: 10
+    vectorActionSize: 0300000003000000
     cameraResolutions: []
     vectorActionDescriptions:
     - Move
     - Turn
-    vectorActionSpaceType: 1
+    vectorActionSpaceType: 0
   model: {fileID: 0}
-  inferenceDevice: 0
+  inferenceDevice: 1
