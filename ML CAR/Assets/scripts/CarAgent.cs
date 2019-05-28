@@ -55,12 +55,15 @@ public class CarAgent : Agent
     public Vector3 carStartPos;
     public Quaternion carStartRotation;
     private Vector3 _carStartPos;
+    private Vector3 previousLocation;
     private Rigidbody carRigidbody;
     private float wheelTurned = 0.0f;
     private Transform origL, origR;
     private float forwardAction,sideAction;
     private CarController cc;
 
+    private float lastTime = 0;
+    private int stayCount = 0;
     private RayPerception3D rayPerception;
     private RangeFinder[] rangeFinders;
     private WheelCollider[] wcs;
@@ -75,6 +78,7 @@ public class CarAgent : Agent
         carStartPos = gameObject.transform.position;
         carRigidbody.mass = CarWeight;
         rayPerception = GetComponent<RayPerception3D>();
+        lastTime = Time.time;
         AddReward(-.5f);
     }
 
@@ -150,7 +154,7 @@ public class CarAgent : Agent
         {
             Debug.Log("go through check point");
             Debug.Log(GetCumulativeReward());
-            AddReward(20f);
+            AddReward(10f);
         }
         else if (collision.gameObject.CompareTag("wall"))
         {
@@ -162,14 +166,35 @@ public class CarAgent : Agent
 
     private void Update()
     {
+        if (stayCount >= 50)
+        {
+            AddReward(-100f);
+            stayCount = 0;
+        }
+        if ((Time.time - lastTime) >= 1)
+        {
+            Vector3 carLocation = gameObject.transform.position;
+            if (Vector3.Distance(carLocation, previousLocation) <= 3)
+            {
+                Debug.Log("stuck");
+                stayCount += 1;
+                previousLocation = carLocation;
+            }
+            lastTime = Time.time;
+        }
         if ((carPorgress - previous) / 10 != 0)
         {
             AddReward((carPorgress - previous));
             previous = carPorgress;
         }
-        if (cc.carSpeed/15 != 0)
+        // carSpeed * 3.6 = actual speed
+        if (cc.carSpeed > 20)
         {
-            AddReward(cc.carSpeed / 15);
+            AddReward(cc.carSpeed / 10 * -.01f);
+        }
+        else if (cc.carSpeed > 2)
+        {
+            AddReward(cc.carSpeed / 10 * .01f);
         }
         AddReward(-.1f);
         Debug.Log(GetCumulativeReward());
