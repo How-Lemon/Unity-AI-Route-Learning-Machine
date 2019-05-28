@@ -79,7 +79,7 @@ public class CarController : MonoBehaviour
 
                 if (Mathf.Abs(hit.forwardSlip) > 0.5 || Mathf.Abs(hit.sidewaysSlip) > 0.5)
                 {
-                    pass = true;
+                    //pass = true;
                 }
                 if(Mathf.Abs(hit.forwardSlip) > 0.6){
                     slipWheel[i] = true;

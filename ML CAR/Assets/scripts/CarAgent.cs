@@ -167,6 +167,10 @@ public class CarAgent : Agent
             AddReward((carPorgress - previous));
             previous = carPorgress;
         }
+        if (cc.carSpeed/15 != 0)
+        {
+            AddReward(cc.carSpeed / 15);
+        }
         AddReward(-.1f);
         Debug.Log(GetCumulativeReward());
     }

@@ -30,8 +30,7 @@ public class CheckPoint : MonoBehaviour
             other.gameObject.GetComponent<CarAgent>().PassCheckPoint(order);
             if(isLast){
                 map.PassGoal(other.gameObject);
-            }
-            
+            }  
         }
     }
 }

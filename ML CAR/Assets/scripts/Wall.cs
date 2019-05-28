@@ -42,6 +42,5 @@ public class Wall : MonoBehaviour
     public void SetPlayMode(){
         editMode = false;
         Destroy(GetComponent<Rigidbody>());
-
     }
 }
