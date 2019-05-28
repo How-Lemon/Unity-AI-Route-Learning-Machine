@@ -112,7 +112,8 @@ public class CarAgent : Agent
                 cc.PushGas(forwardAction);
                 //PushGas(forwardAction);
                 //gameObject.transform.position += new Vector3(actionX, 0, 0);
-            }else if(forwardAction == 2){
+            }
+            else if(forwardAction == 2){
 
                 cc.PushBreak(-1);
                 //PushBrake(forwardAction);
@@ -136,7 +137,7 @@ public class CarAgent : Agent
             }
         }
 
-        if (GetCumulativeReward() <= -5f)
+        if (GetCumulativeReward() <= -100f)
         {
             Done();
             Fail();
@@ -149,12 +150,12 @@ public class CarAgent : Agent
         {
             Debug.Log("go through check point");
             Debug.Log(GetCumulativeReward());
-            AddReward(.1f);
+            AddReward(20f);
         }
         else if (collision.gameObject.CompareTag("wall"))
         {
             Debug.Log("hitting wall");
-            AddReward(-.05f);
+            AddReward(-100f);
             Fail();
         }
     }
@@ -163,10 +164,10 @@ public class CarAgent : Agent
     {
         if ((carPorgress - previous) / 10 != 0)
         {
-            AddReward((carPorgress - previous) * .01f);
+            AddReward((carPorgress - previous));
             previous = carPorgress;
         }
-        AddReward(-.0001f);
+        AddReward(-.1f);
         Debug.Log(GetCumulativeReward());
     }
 
