@@ -49,8 +49,8 @@ MonoBehaviour:
     branchIndex: 1
     value: 2
   - key: 97
-    branchIndex: 2
-    value: 1
+    branchIndex: 1
+    value: 4
   - key: 100
-    branchIndex: 2
-    value: 2
+    branchIndex: 1
+    value: 3

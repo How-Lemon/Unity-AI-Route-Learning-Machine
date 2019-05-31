@@ -12130,13 +12130,23 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
+      objectReference: {fileID: 11400000, guid: 02d2aaaaf38dc3e42b7a7dd5a64933ae,
         type: 2}
     - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: rangeFinderContainer
       value: 
       objectReference: {fileID: 1766172443}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1747564368}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: TurnAngleWidthModifier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12395,7 +12405,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934, type: 2}
     _brainsToControl:
     - {fileID: 0}
-    - {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934, type: 2}
   maxSteps: 20000
   trainingConfiguration:
     width: 80
@@ -12941,6 +12950,21 @@ PrefabInstance:
         type: 3}
       propertyPath: monitorFrequency
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156643668743374204, guid: 65239cef3ae871346ab94396065c1255,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156643668743374204, guid: 65239cef3ae871346ab94396065c1255,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 129.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156643668372575843, guid: 65239cef3ae871346ab94396065c1255,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 42
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1809208578, guid: 65239cef3ae871346ab94396065c1255, type: 3}
