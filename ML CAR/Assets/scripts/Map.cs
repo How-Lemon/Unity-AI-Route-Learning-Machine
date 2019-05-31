@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
+    public int Passed = 0;
     public GameObject[] checkPoints;
     public GameObject[] walls;
-    public GameObject progressPointDB;
+    //public GameObject progressPointDB;
     public float trackLength
     {
         get
@@ -40,7 +41,7 @@ public class Map : MonoBehaviour
 
     private int maxCheckPoint, checkPointPassed = 0;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         segmentLength = new List<float>();
         if (checkPoints.Length == 0)// Get ALL checkpoints
@@ -94,6 +95,7 @@ public class Map : MonoBehaviour
         car.transform.position = checkPoints[0].transform.position;
         car.transform.rotation = checkPoints[0].transform.rotation;
         car.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Passed++;
     }
 
     public float GetCarProgress(Vector3 position, int recentCheckPoint)//Get Current Progress in lap; return lap length if is at goal
@@ -116,7 +118,7 @@ public class Map : MonoBehaviour
             progressPoint = ClosestPointOnLine(now, next, position);
             output = GetLapProgress(recentCheckPoint + 1) + Vector3.Magnitude(progressPoint - now);
         }
-        progressPointDB.transform.position = progressPoint;
+        //progressPointDB.transform.position = progressPoint;
         return output;
     }
 

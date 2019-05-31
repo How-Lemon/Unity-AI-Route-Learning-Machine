@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6199927211434340117
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6199927211434340118}
+  - component: {fileID: 6199927211434340119}
+  - component: {fileID: 6199927211434340112}
+  m_Layer: 0
+  m_Name: MapGenerator
+  m_TagString: mapGenerator
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6199927211434340118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199927211434340117}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 71.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6199927211434340119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199927211434340117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0daafe6c79edb404a83700bf87a06789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkPoint: {fileID: 2095978274011208142, guid: cebba20ac9bb76440b30e1feb79a8d8a,
+    type: 3}
+  canvas: {fileID: 6199927211434340117}
+  road: {fileID: 6517595052656585207, guid: 0788087468217c9489ef01209b3f565c, type: 3}
+  normal: {fileID: 2100000, guid: 90b9c695fe94ca9408f8bc5a626ee766, type: 2}
+  start: {fileID: 2100000, guid: 96a2efa602c23614f874e4e19312a52f, type: 2}
+  goal: {fileID: 2100000, guid: 3d3f445a0c331f544bbafc72607c5c87, type: 2}
+  checkPoints: 40
+  maxLength: 50
+  minLength: 10
+  maxFanAngle: 100
+  distance: 100
+  roadWidth: 10
+  ordered: 1
+--- !u!114 &6199927211434340112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199927211434340117}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e57f23ccd97f4c4a9342ac7d6ff88f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkPoints: []
+  walls: []

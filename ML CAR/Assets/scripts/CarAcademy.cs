@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CarAcademy : Academy
 {
+    
     public override void AcademyReset()
     {
         

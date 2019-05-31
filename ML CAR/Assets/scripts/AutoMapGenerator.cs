@@ -9,7 +9,7 @@ public class AutoMapGenerator : MonoBehaviour
     public Material normal, start, goal;
 
     [Header("Road Generation Settings")]
-    public int checkPoints = 40;
+    public int checkPoints = 10;
     public float maxLength = 30, minLength = 10;
     public float maxFanAngle = 45;
     public float distance = 100;
@@ -20,6 +20,7 @@ public class AutoMapGenerator : MonoBehaviour
     private List<GameObject> roadCollection;
     private int remainingCP;
     private Vector3 activeGenerationPoint;
+    private float windingAngle = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,11 @@ public class AutoMapGenerator : MonoBehaviour
         roadCollection = new List<GameObject>();
         remainingCP = checkPoints;
         activeGenerationPoint = Vector3.zero;
+        foreach (GameObject item in GameObject.FindGameObjectsWithTag("car"))
+        {
+            item.GetComponent<CarAgent>().map = GetComponent<Map>();
+        }
+        GameObject.FindGameObjectWithTag("monitor").GetComponent<StatMonitor>().map = GetComponent<Map>();
     }
 
     // Update is called once per frame
@@ -36,22 +42,22 @@ public class AutoMapGenerator : MonoBehaviour
         Event currentEvent = Event.current;
         if (remainingCP > 0)
         {
-
             generateCheckPoint();
 
             remainingCP--;
-        }else{
+        }
+        else
+        {
             EnterPlayMode();
-            
+
         }
 
     }
 
     void generateCheckPoint()
     {
-        
-        Vector3 hitPosition = activeGenerationPoint;
-        GameObject ck = Instantiate(checkPoint, hitPosition, new Quaternion(), canvas.transform);
+
+        GameObject ck = Instantiate(checkPoint, activeGenerationPoint, new Quaternion(), canvas.transform);
         if (checkPointCollection.Count == 0)
         {
             ck.transform.localScale = new Vector3(roadWidth, roadWidth, roadWidth);
@@ -59,6 +65,7 @@ public class AutoMapGenerator : MonoBehaviour
         }
         checkPointCollection.Add(ck);
         generateRoad_ordered();
+        activeGenerationPoint = GetNextCKPostion();
     }
 
     void generateRoad_ordered()
@@ -79,10 +86,37 @@ public class AutoMapGenerator : MonoBehaviour
         roadCollection.Add(newRoad);
         //}
     }
-    void refreshActivePoint(){
+    void refreshActivePoint(Vector3 start, Vector3 direction)
+    {
 
     }
-    void EnterPlayMode(){
+
+    private Vector3 GetNextCKPostion()
+    {
+        if (checkPointCollection.Count == 1) return Vector3.forward * Random.Range(minLength, maxLength);
+        Vector3 nowPosition = checkPointCollection[checkPointCollection.Count - 1].transform.position, lastPosition = checkPointCollection[checkPointCollection.Count - 2].transform.position;
+        Vector3 direction = lastPosition - nowPosition;
+        direction /= direction.magnitude;
+        //Get a random direction
+        float angle = Random.Range(-maxFanAngle, maxFanAngle);
+        while (Mathf.Abs(angle + windingAngle) >= 100)
+        {
+            angle = Random.Range(-maxFanAngle, maxFanAngle);
+        }// 
+        windingAngle += angle;
+        float rad = angle * Mathf.Deg2Rad;
+
+        Vector3 sDir = -direction;
+        sDir = new Vector3(Mathf.Cos(rad) * sDir.x - Mathf.Sin(rad) * sDir.z,
+                           sDir.y,
+                           Mathf.Sin(rad) * sDir.x + Mathf.Cos(rad) * sDir.z);
+        float distance = Random.Range(minLength, maxLength);
+        Vector3 newPos = sDir * distance + nowPosition;
+        return newPos;
+    }
+    void EnterPlayMode()
+    {
+        GetComponent<Map>().enabled = true;
         Destroy(this);
     }
 }
