@@ -12,19 +12,24 @@ public class CarAgent : Agent
     public float EngineForce = 1f;
     public float BreakForce = 1f;
     public float MaxSpeed = 2.5f;
-    public float TurnSpeed = 1f;
-    public float forwardInput{
-        get{
+    public float TurnAngle = 20f;
+    public float TurnAngleWidthModifier = 1.5f;
+    public float forwardInput
+    {
+        get
+        {
             return forwardAction;
         }
     }
 
-    public float sideInput{
-        get{
+    public float sideInput
+    {
+        get
+        {
             return sideAction;
         }
     }
-    
+
     //previous distance
     private float previous = 0f;
 
@@ -34,18 +39,23 @@ public class CarAgent : Agent
 
     public GameObject rangeFinderContainer;
     public int maxCheckPoint;
-    public int checkPointPassedInLap{
-        get{
+    public int checkPointPassedInLap
+    {
+        get
+        {
             return _cppl;
         }
-        private set{
+        private set
+        {
             _cppl = value;
         }
     }
     private int _cppl = 0;
 
-    public float carPorgress{
-        get{
+    public float carPorgress
+    {
+        get
+        {
             return map.GetCarProgress(transform.position, checkPointPassedInLap) + laps * map.trackLength;
         }
     }
@@ -59,7 +69,7 @@ public class CarAgent : Agent
     private Rigidbody carRigidbody;
     private float wheelTurned = 0.0f;
     private Transform origL, origR;
-    private float forwardAction,sideAction;
+    private float forwardAction, sideAction;
     private CarController cc;
 
     private float lastTime = 0;
@@ -71,9 +81,9 @@ public class CarAgent : Agent
     private void Start()
     {
         rangeFinders = rangeFinderContainer.GetComponentsInChildren<RangeFinder>();
-        
+
         cc = GetComponent<CarController>();
-        wcs = new WheelCollider[]{wheelBL, wheelBR, wheelFL, wheelFR};
+        wcs = new WheelCollider[] { wheelBL, wheelBR, wheelFL, wheelFR };
         carRigidbody = gameObject.GetComponent<Rigidbody>();
         carStartPos = gameObject.transform.position;
         carRigidbody.mass = CarWeight;
@@ -117,28 +127,37 @@ public class CarAgent : Agent
                 //PushGas(forwardAction);
                 //gameObject.transform.position += new Vector3(actionX, 0, 0);
             }
-            else if(forwardAction == 2){
+            else if (forwardAction == 2)
+            {
 
                 cc.PushBreak(-1);
                 //PushBrake(forwardAction);
-            }else if(forwardAction == 0){
+            }
+            else if (forwardAction == 0)
+            {
                 ResetMotor();
             }
 
-            if (sideAction != 0)
+            switch (sideAction)
             {
-                if (sideAction == 1)
-                {
-                    TurnWheel(sideAction);
-                }
-                else
-                {
+                case 1:
+                    TurnWheel(1);
+                    break;
+                case 2:
                     TurnWheel(-1);
-                }
+                    break;
+                case 3:
+                    TurnWheel(1 * TurnAngleWidthModifier);
+                    break;
+                case 4:
+                    TurnWheel(-1 * TurnAngleWidthModifier);
+                    break;
+                case 0:
+                default:
+                    ResetTurn();
+                    break;
             }
-            else {
-                ResetTurn();
-            }
+
         }
 
         if (GetCumulativeReward() <= -100f)
@@ -197,7 +216,7 @@ public class CarAgent : Agent
             AddReward(cc.carSpeed / 10 * .01f);
         }
         AddReward(-.1f);
-        Debug.Log(GetCumulativeReward());
+        //Debug.Log(GetCumulativeReward());
     }
 
     private void PushGas()
@@ -225,7 +244,8 @@ public class CarAgent : Agent
         wheelFL.brakeTorque = BreakForce * force * -100;
         wheelFR.brakeTorque = BreakForce * force * -100;
     }
-    public void Reset(){
+    public void Reset()
+    {
         PushBrake(1);
         ResetMotor();
         ResetTurn();
@@ -237,41 +257,49 @@ public class CarAgent : Agent
         AgentReset();
     }
 
-    private void ResetMotor(){
+    private void ResetMotor()
+    {
         wheelBL.brakeTorque = 0;
         wheelBR.brakeTorque = 0;
         wheelFL.brakeTorque = 0;
         wheelFR.brakeTorque = 0;
         wheelBL.motorTorque = 0;
         wheelBR.motorTorque = 0;
-       
+
     }
-    private void ResetTurn(){
+    private void ResetTurn()
+    {
         wheelFL.steerAngle = 0;
         wheelFR.steerAngle = 0;
-        RootL.transform.eulerAngles = new Vector3(RootL.parent.transform.eulerAngles.x,RootL.parent.transform.eulerAngles.y,RootL.parent.transform.eulerAngles.z);
-        RootR.transform.eulerAngles = new Vector3(RootL.parent.transform.eulerAngles.x,RootL.parent.transform.eulerAngles.y,RootL.parent.transform.eulerAngles.z);
+        RootL.transform.eulerAngles = new Vector3(RootL.parent.transform.eulerAngles.x, RootL.parent.transform.eulerAngles.y, RootL.parent.transform.eulerAngles.z);
+        RootR.transform.eulerAngles = new Vector3(RootL.parent.transform.eulerAngles.x, RootL.parent.transform.eulerAngles.y, RootL.parent.transform.eulerAngles.z);
     }
 
-    private void TurnWheel(float force){
-        wheelFL.steerAngle = TurnSpeed * force;
-        wheelFR.steerAngle = TurnSpeed * force;
-        RootL.transform.eulerAngles = new Vector3(RootL.parent.transform.eulerAngles.x,RootL.parent.transform.eulerAngles.y + TurnSpeed * force,RootL.parent.transform.eulerAngles.z);
-        RootR.transform.eulerAngles = new Vector3(RootL.parent.transform.eulerAngles.x,RootL.parent.transform.eulerAngles.y+TurnSpeed * force,RootL.parent.transform.eulerAngles.z);
+    private void TurnWheel(float force)
+    {
+        wheelFL.steerAngle = TurnAngle * force;
+        wheelFR.steerAngle = TurnAngle * force;
+        RootL.transform.eulerAngles = new Vector3(RootL.parent.transform.eulerAngles.x, RootL.parent.transform.eulerAngles.y + TurnAngle * force, RootL.parent.transform.eulerAngles.z);
+        RootR.transform.eulerAngles = new Vector3(RootL.parent.transform.eulerAngles.x, RootL.parent.transform.eulerAngles.y + TurnAngle * force, RootL.parent.transform.eulerAngles.z);
 
     }
 
     public void PassCheckPoint(int checkPointID)//is called When the car passed a checkpoint
     {
-        if(checkPointID >= map.GetMaxCheckPointIndex){
+        if (checkPointID >= map.GetMaxCheckPointIndex)
+        {
             Debug.Log("go through Goal");
             Debug.Log(GetCumulativeReward());
             AddReward(.5f);
             checkPointPassedInLap = 0;
-            laps ++;
-        }else if(checkPointID < checkPointPassedInLap){
+            laps++;
+        }
+        else if (checkPointID < checkPointPassedInLap)
+        {
             Fail();
-        }else{
+        }
+        else
+        {
             Debug.Log("go through check point");
             Debug.Log(GetCumulativeReward());
             AddReward(.5f);
@@ -285,7 +313,7 @@ public class CarAgent : Agent
     }
 
 
-     public override void AgentReset()
+    public override void AgentReset()
     {
         //gameObject.transform.position = carStartPos;
     }

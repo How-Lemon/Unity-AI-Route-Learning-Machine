@@ -45,7 +45,7 @@ public class StatMonitor : MonoBehaviour
     void FixedUpdate()
     {
         rpm.text = string.Format("Speed: {0:0.00} kph", CarController.carSpeed * 3.6);
-        distance.text = string.Format("Progress: {0:0.00} m\nReward: {1}", car.carPorgress, car.GetCumulativeReward());
+        distance.text = string.Format("Progress: {0:0.00} m\nReword: {1}", car.carPorgress, car.GetCumulativeReward());
         CheckInput();
         CheckWheel();
         StartCoroutine(CheckRangeFinders());
