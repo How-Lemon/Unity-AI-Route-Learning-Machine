@@ -12,7 +12,7 @@ public class Map : MonoBehaviour
     {
         get
         {
-            if (_trackLength != -1) return _trackLength;
+            if (_trackLength > 0) return _trackLength;
             else
             {
                 _trackLength = CalculateTrackLength();
@@ -43,6 +43,11 @@ public class Map : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        StartMap();
+    }
+
+    public void StartMap(){
+        Debug.Log("Start Scanning");
         segmentLength = new List<float>();
         if (checkPoints.Length == 0)// Get ALL checkpoints
         {
@@ -100,6 +105,7 @@ public class Map : MonoBehaviour
 
     public float GetCarProgress(Vector3 position, int recentCheckPoint)//Get Current Progress in lap; return lap length if is at goal
     {
+        Debug.Log(trackLength);
         float output = 0.0f;
         if (recentCheckPoint >= maxCheckPoint)
         {
@@ -136,7 +142,7 @@ public class Map : MonoBehaviour
         }
         if (checkPoint <= 0) return 0f;
         float output = 0f;
-        Debug.Log(checkPoint);
+        //Debug.Log(checkPoint);
         if (_tlLength[checkPoint - 1] == -1f)
         {
             for (int i = 0; i < checkPoint - 1; i++)

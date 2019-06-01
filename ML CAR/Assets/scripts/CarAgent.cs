@@ -84,8 +84,8 @@ public class CarAgent : Agent
 
         cc = GetComponent<CarController>();
         wcs = new WheelCollider[] { wheelBL, wheelBR, wheelFL, wheelFR };
-        carRigidbody = gameObject.GetComponent<Rigidbody>();
-        carStartPos = gameObject.transform.position;
+        carRigidbody = GetComponent<Rigidbody>();
+        carStartPos = transform.position;
         carRigidbody.mass = CarWeight;
         rayPerception = GetComponent<RayPerception3D>();
         lastTime = Time.time;
@@ -226,7 +226,7 @@ public class CarAgent : Agent
 
     private void PushGas(float force)
     {
-        Debug.Log("VROOM");
+        //Debug.Log("VROOM");
         //carRigidbody.AddRelativeForce(Vector3.forward * EngineForce * force * 100);
         wheelBL.motorTorque = EngineForce * force;
         wheelBR.motorTorque = EngineForce * force;
@@ -236,7 +236,7 @@ public class CarAgent : Agent
 
     private void PushBrake(float force)
     {
-        Debug.Log("WEEZE");
+        //Debug.Log("WEEZE");
         wheelBL.motorTorque = 0;
         wheelBR.motorTorque = 0;
         wheelBL.brakeTorque = BreakForce * force * -100;

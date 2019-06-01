@@ -818,7 +818,7 @@ Transform:
   m_GameObject: {fileID: 7406510688426059988}
   m_LocalRotation: {x: -0.000001803867, y: 0.000000014554555, z: 0.0000051482602,
     w: 1}
-  m_LocalPosition: {x: -70.11956, y: 0.5901705, z: -55.189987}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7406510688038053484}
@@ -872,7 +872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646333ea390885340b8d73547af865e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: 02d2aaaaf38dc3e42b7a7dd5a64933ae, type: 2}
+  brain: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934, type: 2}
   agentParameters:
     agentCameras: []
     agentRenderTextures: []

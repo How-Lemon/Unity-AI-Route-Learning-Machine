@@ -15,6 +15,7 @@ public class AutoMapGenerator : MonoBehaviour
     public float distance = 100;
     public float roadWidth = 10;
     public bool ordered = true;
+    public bool done = false;
 
     private List<GameObject> checkPointCollection;
     private List<GameObject> roadCollection;
@@ -33,7 +34,7 @@ public class AutoMapGenerator : MonoBehaviour
         {
             item.GetComponent<CarAgent>().map = GetComponent<Map>();
         }
-        GameObject.FindGameObjectWithTag("monitor").GetComponent<StatMonitor>().map = GetComponent<Map>();
+        //GameObject.FindGameObjectWithTag("monitor").GetComponent<StatMonitor>().map = GetComponent<Map>();
     }
 
     // Update is called once per frame
@@ -116,6 +117,7 @@ public class AutoMapGenerator : MonoBehaviour
     }
     void EnterPlayMode()
     {
+        Debug.Log("Generation Complete");
         GetComponent<Map>().enabled = true;
         Destroy(this);
     }

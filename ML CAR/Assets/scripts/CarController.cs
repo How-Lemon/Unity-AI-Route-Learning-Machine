@@ -52,9 +52,13 @@ public class CarController : MonoBehaviour
 
     void FixedUpdate()
     {
-        float dist = Vector3.Distance(mainCamera.position, cameraPoint.position);
-        float fracJourney = speed * dist * dist / 10;
-        mainCamera.position = Vector3.Lerp(mainCamera.position, cameraPoint.position, fracJourney);
+        if (mainCamera)
+        {
+            float dist = Vector3.Distance(mainCamera.position, cameraPoint.position);
+            float fracJourney = speed * dist * dist / 10;
+            mainCamera.position = Vector3.Lerp(mainCamera.position, cameraPoint.position, fracJourney);
+        }
+
     }
 
     void Update()
@@ -81,9 +85,12 @@ public class CarController : MonoBehaviour
                 {
                     //pass = true;
                 }
-                if(Mathf.Abs(hit.forwardSlip) > 0.6){
+                if (Mathf.Abs(hit.forwardSlip) > 0.6)
+                {
                     slipWheel[i] = true;
-                }else{
+                }
+                else
+                {
                     slipWheel[i] = false;
                 }
                 if (Mathf.Abs(hit.forwardSlip) > ABSThreshold)
@@ -125,21 +132,24 @@ public class CarController : MonoBehaviour
     {
         wc[0].motorTorque = 0;
         wc[1].motorTorque = 0;
-        
+
         for (int i = 0; i < 4; i++)
         {
             if (breakable[i] || wc[i].rpm < RPMThreshold)
             {
                 //Debug.Log(wc[i].rpm);
                 wc[i].brakeTorque = BreakForce * force * -100;
-            }else{
+            }
+            else
+            {
                 wc[i].brakeTorque = 0;
             }
         }
     }
-    public void PushGas(float force){
-        if(!slipWheel[0])wc[0].motorTorque = EngineForce * force;
-        if(!slipWheel[1])wc[1].motorTorque = EngineForce * force;
+    public void PushGas(float force)
+    {
+        if (!slipWheel[0]) wc[0].motorTorque = EngineForce * force;
+        if (!slipWheel[1]) wc[1].motorTorque = EngineForce * force;
         wc[2].brakeTorque = 0;
         wc[3].brakeTorque = 0;
     }

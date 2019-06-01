@@ -31,7 +31,7 @@ public class WallJoint : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.left), out hit, 1000, layerMask))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * hit.distance, Color.red);
-            Debug.Log("Did Hit");
+            //Debug.Log("Did Hit");
             GameObject joint = Instantiate(JointWall, hit.point,new Quaternion());
             joint.transform.SetParent(transform.parent);
             Destroy(hit.transform.gameObject);
@@ -39,13 +39,13 @@ public class WallJoint : MonoBehaviour
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.left) * 1000, Color.red);
-            Debug.Log("Did not Hit");
+            //Debug.Log("Did not Hit");
         }
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.right), out hit, Mathf.Infinity, layerMask))
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * hit.distance, Color.red);
-            Debug.Log("Did Hit");
+            //Debug.Log("Did Hit");
             GameObject joint = Instantiate(JointWall, hit.point,new Quaternion());
             joint.transform.SetParent(transform.parent);
             Destroy(gameObject);
@@ -53,7 +53,7 @@ public class WallJoint : MonoBehaviour
         else
         {
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.right) * 1000, Color.red);
-            Debug.Log("Did not Hit");
+            //Debug.Log("Did not Hit");
         }
  
     }

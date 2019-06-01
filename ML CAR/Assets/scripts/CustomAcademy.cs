@@ -9,6 +9,7 @@ public class CustomAcademy : MonoBehaviour
     public GameObject Car;
     public int CarCount = 10;
     public int lapCount = 10;
+    GameObject mg;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,10 +30,20 @@ public class CustomAcademy : MonoBehaviour
             DestroyImmediate(item);
         }
         Destroy(GameObject.FindGameObjectWithTag("mapGenerator"));
-        GameObject mg = Instantiate(MapGenerator);
-        for(int i = 0; i<CarCount;i++){
-            Instantiate(Car);
+        mg = Instantiate(MapGenerator);
+        StartCoroutine("WaitForGeneration");
+    }
+    IEnumerator WaitForGeneration(){
+        while(mg.GetComponent<Map>().enabled == false){
+            yield return 0;
         }
-        mg.GetComponent<Map>().Start();
+        
+        for(int i = 0; i<CarCount;i++){
+            GameObject car = Instantiate(Car);
+            car.GetComponent<CarAgent>().map = mg.GetComponent<Map>();
+        }
+        mg.GetComponent<Map>().enabled = true;
+        //mg.GetComponent<Map>().StartMap();
+        
     }
 }

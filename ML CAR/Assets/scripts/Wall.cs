@@ -17,7 +17,7 @@ public class Wall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (editMode){ rb.WakeUp();Debug.Log("DANG");};
+        if (editMode){ rb.WakeUp();};
     }
     void OnCollisionEnter(Collision collision)
     {
