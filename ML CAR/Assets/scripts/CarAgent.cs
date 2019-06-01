@@ -178,7 +178,7 @@ public class CarAgent : Agent
         else if (collision.gameObject.CompareTag("wall"))
         {
             Debug.Log("hitting wall");
-            AddReward(-100f);
+            AddReward(-10f);
             Fail();
         }
     }
@@ -187,7 +187,7 @@ public class CarAgent : Agent
     {
         if (stayCount >= 50)
         {
-            AddReward(-100f);
+            Fail();
             stayCount = 0;
         }
         if ((Time.time - lastTime) >= 1)
