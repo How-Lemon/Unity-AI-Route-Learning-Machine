@@ -41,9 +41,17 @@ public class CustomAcademy : MonoBehaviour
         for(int i = 0; i<CarCount;i++){
             GameObject car = Instantiate(Car);
             car.GetComponent<CarAgent>().map = mg.GetComponent<Map>();
+            car.GetComponent<CarAgent>().ca = this;
         }
         mg.GetComponent<Map>().enabled = true;
         //mg.GetComponent<Map>().StartMap();
         
+    }
+
+    public void ResetCar(Vector3 position, Quaternion rotation){
+        
+        GameObject car = Instantiate(Car, position, rotation);;
+            car.GetComponent<CarAgent>().map = mg.GetComponent<Map>();
+            car.GetComponent<CarAgent>().ca = this;
     }
 }

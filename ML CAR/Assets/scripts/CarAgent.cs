@@ -8,6 +8,7 @@ public class CarAgent : Agent
 
     [Header("Car Agent Settings")]
     public Map map;
+    public CustomAcademy ca;
     public float CarWeight = 100;
     public float EngineForce = 1f;
     public float BreakForce = 1f;
@@ -246,15 +247,12 @@ public class CarAgent : Agent
     }
     public void Reset()
     {
-        PushBrake(1);
-        ResetMotor();
-        ResetTurn();
-        gameObject.transform.position = carStartPos;
-        gameObject.transform.rotation = carStartRotation;
-        carRigidbody.velocity = Vector3.zero;
-        laps = 0;
-        checkPointPassedInLap = 0;
+       
+
+        
         AgentReset();
+        ca.ResetCar(carStartPos, carStartRotation);
+        Destroy(gameObject);
     }
 
     private void ResetMotor()
@@ -289,10 +287,11 @@ public class CarAgent : Agent
         if (checkPointID >= map.GetMaxCheckPointIndex)
         {
             Debug.Log("go through Goal");
-            Debug.Log(GetCumulativeReward());
+            //Debug.Log(GetCumulativeReward());
             AddReward(.5f);
             checkPointPassedInLap = 0;
-            laps++;
+            Done();
+            //laps++;
         }
         else if (checkPointID < checkPointPassedInLap)
         {
@@ -301,7 +300,7 @@ public class CarAgent : Agent
         else
         {
             Debug.Log("go through check point");
-            Debug.Log(GetCumulativeReward());
+            //Debug.Log(GetCumulativeReward());
             AddReward(.5f);
             checkPointPassedInLap = checkPointID;
         }

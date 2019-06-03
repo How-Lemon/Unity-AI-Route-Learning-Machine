@@ -5,7 +5,7 @@ using UnityEngine.Animations;
 
 public class CameraObserver : MonoBehaviour
 {
-    Vector3 position = Vector3.zero;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,7 @@ public class CameraObserver : MonoBehaviour
     void Update()
     {
         int cc = 0;
+        Vector3 position = Vector3.zero;
         foreach (GameObject item in GameObject.FindGameObjectsWithTag("car"))
         {
             cc++;
