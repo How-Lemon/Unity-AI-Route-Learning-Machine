@@ -51,13 +51,14 @@ MonoBehaviour:
   normal: {fileID: 2100000, guid: 90b9c695fe94ca9408f8bc5a626ee766, type: 2}
   start: {fileID: 2100000, guid: 96a2efa602c23614f874e4e19312a52f, type: 2}
   goal: {fileID: 2100000, guid: 3d3f445a0c331f544bbafc72607c5c87, type: 2}
-  checkPoints: 40
-  maxLength: 50
+  checkPoints: 20
+  maxLength: 40
   minLength: 10
-  maxFanAngle: 100
+  maxFanAngle: 50
   distance: 100
   roadWidth: 10
   ordered: 1
+  done: 0
 --- !u!114 &6199927211434340112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,5 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e57f23ccd97f4c4a9342ac7d6ff88f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Passed: 0
   checkPoints: []
   walls: []

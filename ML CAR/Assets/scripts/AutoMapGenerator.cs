@@ -49,7 +49,7 @@ public class AutoMapGenerator : MonoBehaviour
         }
         else
         {
-            EnterPlayMode();
+            StartCoroutine(EnterPlayMode());
 
         }
 
@@ -115,8 +115,10 @@ public class AutoMapGenerator : MonoBehaviour
         Vector3 newPos = sDir * distance + nowPosition;
         return newPos;
     }
-    void EnterPlayMode()
+    IEnumerator EnterPlayMode()
     {
+        
+        yield return new WaitForSeconds(1f);
         Debug.Log("Generation Complete");
         GetComponent<Map>().enabled = true;
         Destroy(this);

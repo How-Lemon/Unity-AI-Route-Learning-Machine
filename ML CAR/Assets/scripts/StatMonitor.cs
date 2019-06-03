@@ -18,7 +18,7 @@ public class StatMonitor : MonoBehaviour
     public GameObject rangeFindersContainer, rangeFinderTexts;
     public Map map;
     public GameObject textInstance;
-    
+
     private Image[] wheelMonitor;
     private WheelCollider[] wc = new WheelCollider[4];
     private RangeFinder[] rangefinders;
@@ -28,6 +28,19 @@ public class StatMonitor : MonoBehaviour
     void Start()
     {
         wheelMonitor = new Image[] { BL, BR, FL, FR };
+        GetWC();
+        lastTime = Time.time;
+
+    }
+
+    void GetWC()
+    {
+        rangeFinderTexts.GetComponent<GridLayoutGroup>().enabled = true;
+        foreach (Text item in rfs)
+        {
+            Destroy(item.gameObject);
+        }
+        rfs.Clear();
         wc[0] = car.wheelBL;
         wc[1] = car.wheelBR;
         wc[2] = car.wheelFL;
@@ -37,8 +50,6 @@ public class StatMonitor : MonoBehaviour
         {
             rfs.Add(Instantiate(textInstance, rangeFinderTexts.transform).GetComponent<Text>());
         }
-        lastTime = Time.time;
-        
     }
 
     // Update is called once per frame
@@ -47,11 +58,17 @@ public class StatMonitor : MonoBehaviour
         rpm.text = string.Format("Speed: {0:0.00} kph", CarController.carSpeed * 3.6);
         distance.text = string.Format("Progress: {0:0.00} m\nReword: {1}", car.carPorgress, car.GetCumulativeReward());
         CheckInput();
-        CheckWheel();
+        try{
+            CheckWheel();
+        }catch{
+            GetWC();
+        }
+        
         StartCoroutine(CheckRangeFinders());
         StartCoroutine(RemoveLayout());
     }
-    IEnumerator RemoveLayout(){
+    IEnumerator RemoveLayout()
+    {
         yield return new WaitForSeconds(1f);
         rangeFinderTexts.GetComponent<GridLayoutGroup>().enabled = false;
     }
@@ -117,16 +134,25 @@ public class StatMonitor : MonoBehaviour
         ready = false;
         for (int i = 0; i < rangefinders.Length; i++)
         {
-            RangeFinder rf = rangefinders[i];
-            if (rf.detected)
+            try
             {
-                rfs[i].text = string.Format("<color=#008000ff><b>{0}: {1:0.00}</b></color>", rf.gameObject.name, rf.range);
+                RangeFinder rf = rangefinders[i];
+                if (rf.detected)
+                {
+                    rfs[i].text = string.Format("<color=#008000ff><b>{0}: {1:0.00}</b></color>", rf.gameObject.name, rf.range);
+                }
+                else
+                {
+                    rfs[i].text = string.Format("{0}: {1:0.00}", rf.gameObject.name, rf.range);
+                }
             }
-            else
+            catch
             {
-                rfs[i].text = string.Format("{0}: {1:0.00}", rf.gameObject.name, rf.range);
+                GetWC();
             }
+
         }
         ready = true;
+
     }
 }

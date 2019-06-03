@@ -105,7 +105,7 @@ public class Map : MonoBehaviour
 
     public float GetCarProgress(Vector3 position, int recentCheckPoint)//Get Current Progress in lap; return lap length if is at goal
     {
-        Debug.Log(trackLength);
+        //Debug.Log(trackLength);
         float output = 0.0f;
         if (recentCheckPoint >= maxCheckPoint)
         {

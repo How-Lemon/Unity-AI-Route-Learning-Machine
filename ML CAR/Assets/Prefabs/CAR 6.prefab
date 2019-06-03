@@ -871,7 +871,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646333ea390885340b8d73547af865e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934, type: 2}
+  brain: {fileID: 11400000, guid: f18c5c83ccdcec248bb9f597e5d4717f, type: 2}
   agentParameters:
     agentCameras: []
     agentRenderTextures: []
@@ -880,6 +880,7 @@ MonoBehaviour:
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
   map: {fileID: 0}
+  ca: {fileID: 0}
   CarWeight: 500
   EngineForce: 200
   BreakForce: 2.5

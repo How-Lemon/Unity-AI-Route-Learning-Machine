@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b23992c8eb17439887f5e944bf04a40, type: 3}
-  m_Name: CarBrain_Learning
+  m_Name: CarBrain_Playing
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 18
-    numStackedVectorObservations: 20
-    vectorActionSize: 0300000005000000
+    vectorObservationSize: 1
+    numStackedVectorObservations: 1
+    vectorActionSize: 01000000
     cameraResolutions: []
     vectorActionDescriptions:
-    - Move
-    - Turn
+    - 
     vectorActionSpaceType: 0
-  model: {fileID: 11400000, guid: 927e0ac3983f6324b9d0d1534d117e8e, type: 3}
-  inferenceDevice: 1
+  model: {fileID: 0}
+  inferenceDevice: 0
