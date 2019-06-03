@@ -87,6 +87,7 @@ public class CarAgent : Agent
         wcs = new WheelCollider[] { wheelBL, wheelBR, wheelFL, wheelFR };
         carRigidbody = GetComponent<Rigidbody>();
         carStartPos = transform.position;
+        carStartRotation = transform.rotation;
         carRigidbody.mass = CarWeight;
         rayPerception = GetComponent<RayPerception3D>();
         lastTime = Time.time;

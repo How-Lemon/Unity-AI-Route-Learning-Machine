@@ -233,31 +233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CAR (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+    - target: {fileID: 6955977140693926078, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1952307421}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: brain
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
-        type: 2}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: rangeFinderContainer
-      value: 
-      objectReference: {fileID: 1093529485}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: map
-      value: 
-      objectReference: {fileID: 1747564368}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: TurnAngleWidthModifier
-      value: 2
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
@@ -314,6 +293,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
+        type: 2}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: rangeFinderContainer
+      value: 
+      objectReference: {fileID: 1093529485}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1747564368}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: TurnAngleWidthModifier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1952307421}
     - target: {fileID: 131969017460736196, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: maxRange
@@ -11907,31 +11912,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CAR (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+    - target: {fileID: 6955977140693926078, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1952307421}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: brain
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
-        type: 2}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: rangeFinderContainer
-      value: 
-      objectReference: {fileID: 1363025045}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: map
-      value: 
-      objectReference: {fileID: 1747564368}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: TurnAngleWidthModifier
-      value: 2
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
@@ -11988,6 +11972,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
+        type: 2}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: rangeFinderContainer
+      value: 
+      objectReference: {fileID: 1363025045}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1747564368}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: TurnAngleWidthModifier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1952307421}
     - target: {fileID: 131969017460736196, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: maxRange
@@ -12079,31 +12089,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CAR (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+    - target: {fileID: 6955977140693926078, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1952307421}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: brain
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
-        type: 2}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: rangeFinderContainer
-      value: 
-      objectReference: {fileID: 670997395}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: map
-      value: 
-      objectReference: {fileID: 1747564368}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: TurnAngleWidthModifier
-      value: 2
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
@@ -12160,6 +12149,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
+        type: 2}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: rangeFinderContainer
+      value: 
+      objectReference: {fileID: 670997395}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1747564368}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: TurnAngleWidthModifier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1952307421}
     - target: {fileID: 131969017460736196, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: maxRange
@@ -12215,6 +12230,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb172294dbbcc408286b156a2c4b553c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &580115247 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3360903397899387675, guid: 5c01d37cd34f82d4695bc836b275aa68,
+    type: 3}
+  m_PrefabInstance: {fileID: 209819620}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &598505420 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6955977140559632596, guid: fb6729a3e02718a46b9a6763a00fe8b9,
@@ -12294,31 +12315,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CAR (10)
       objectReference: {fileID: 0}
-    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+    - target: {fileID: 6955977140693926078, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1952307421}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: brain
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
-        type: 2}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: rangeFinderContainer
-      value: 
-      objectReference: {fileID: 1056123109}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: map
-      value: 
-      objectReference: {fileID: 1747564368}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: TurnAngleWidthModifier
-      value: 2
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
@@ -12375,6 +12375,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
+        type: 2}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: rangeFinderContainer
+      value: 
+      objectReference: {fileID: 1056123109}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1747564368}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: TurnAngleWidthModifier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1952307421}
     - target: {fileID: 131969017460736196, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: maxRange
@@ -12613,12 +12639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646333ea390885340b8d73547af865e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &820860655 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-    type: 3}
-  m_PrefabInstance: {fileID: 951265905}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &862225055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12631,31 +12651,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CAR (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+    - target: {fileID: 6955977140693926078, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1952307421}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: brain
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
-        type: 2}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: rangeFinderContainer
-      value: 
-      objectReference: {fileID: 646419908}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: map
-      value: 
-      objectReference: {fileID: 1747564368}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: TurnAngleWidthModifier
-      value: 2
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
@@ -12712,6 +12711,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
+        type: 2}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: rangeFinderContainer
+      value: 
+      objectReference: {fileID: 646419908}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1747564368}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: TurnAngleWidthModifier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1952307421}
     - target: {fileID: 131969017460736196, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: maxRange
@@ -12831,12 +12856,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!4 &902358804 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4537389900395872927, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-    type: 3}
-  m_PrefabInstance: {fileID: 951265905}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &922558818 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6955977140693926078, guid: fb6729a3e02718a46b9a6763a00fe8b9,
@@ -12867,31 +12886,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CAR
       objectReference: {fileID: 0}
-    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+    - target: {fileID: 6955977140693926078, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1952307421}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: brain
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
-        type: 2}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: rangeFinderContainer
-      value: 
-      objectReference: {fileID: 1766172443}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: map
-      value: 
-      objectReference: {fileID: 1747564368}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: TurnAngleWidthModifier
-      value: 2
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
@@ -12948,6 +12946,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
+        type: 2}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: rangeFinderContainer
+      value: 
+      objectReference: {fileID: 1766172443}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1747564368}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: TurnAngleWidthModifier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1952307421}
     - target: {fileID: 131969017460736196, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: maxRange
@@ -12997,31 +13021,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CAR (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+    - target: {fileID: 6955977140693926078, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1952307421}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: brain
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
-        type: 2}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: rangeFinderContainer
-      value: 
-      objectReference: {fileID: 416238215}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: map
-      value: 
-      objectReference: {fileID: 1747564368}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: TurnAngleWidthModifier
-      value: 2
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
@@ -13078,6 +13081,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
+        type: 2}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: rangeFinderContainer
+      value: 
+      objectReference: {fileID: 416238215}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1747564368}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: TurnAngleWidthModifier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1952307421}
     - target: {fileID: 131969017460736196, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: maxRange
@@ -13268,31 +13297,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CAR (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+    - target: {fileID: 6955977140693926078, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1952307421}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: brain
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
-        type: 2}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: rangeFinderContainer
-      value: 
-      objectReference: {fileID: 2018632376}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: map
-      value: 
-      objectReference: {fileID: 1747564368}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: TurnAngleWidthModifier
-      value: 2
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
@@ -13349,6 +13357,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
+        type: 2}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: rangeFinderContainer
+      value: 
+      objectReference: {fileID: 2018632376}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1747564368}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: TurnAngleWidthModifier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1952307421}
     - target: {fileID: 131969017460736196, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: maxRange
@@ -13398,31 +13432,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CAR (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+    - target: {fileID: 6955977140693926078, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1952307421}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: brain
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
-        type: 2}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: rangeFinderContainer
-      value: 
-      objectReference: {fileID: 598505420}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: map
-      value: 
-      objectReference: {fileID: 1747564368}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: TurnAngleWidthModifier
-      value: 2
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
@@ -13479,6 +13492,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
+        type: 2}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: rangeFinderContainer
+      value: 
+      objectReference: {fileID: 598505420}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1747564368}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: TurnAngleWidthModifier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1952307421}
     - target: {fileID: 131969017460736196, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: maxRange
@@ -13558,31 +13597,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CAR (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+    - target: {fileID: 6955977140693926078, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1952307421}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: brain
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
-        type: 2}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: rangeFinderContainer
-      value: 
-      objectReference: {fileID: 1080407539}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: map
-      value: 
-      objectReference: {fileID: 1747564368}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: TurnAngleWidthModifier
-      value: 2
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
@@ -13639,6 +13657,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
+        type: 2}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: rangeFinderContainer
+      value: 
+      objectReference: {fileID: 1080407539}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1747564368}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: TurnAngleWidthModifier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1952307421}
     - target: {fileID: 131969017460736196, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: maxRange
@@ -13676,6 +13720,58 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb6729a3e02718a46b9a6763a00fe8b9, type: 3}
+--- !u!1 &1709272514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1709272516}
+  - component: {fileID: 1709272515}
+  m_Layer: 0
+  m_Name: customAcademy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1709272515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709272514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e5709f0d7583f840a601a45cd4707f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MapGenerator: {fileID: 0}
+  StatMonitor: {fileID: 2137316126}
+  Car: {fileID: 7406510688426059988, guid: 09e4288d513c1f5489681375b5caaf87, type: 3}
+  chaseCamera: {fileID: 1952307421}
+  CarCount: 10
+  lapCount: 10
+  staticMode: 1
+  staticMap: {fileID: 1747564368}
+  startCheckPoint: {fileID: 580115247}
+--- !u!4 &1709272516
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709272514}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.6078796, y: 5.5743866, z: 16.421394}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1747564368 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4975578735107165956, guid: 5c01d37cd34f82d4695bc836b275aa68,
@@ -13791,7 +13887,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934, type: 2}
     _brainsToControl:
     - {fileID: 0}
-    - {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934, type: 2}
   maxSteps: 20000
   trainingConfiguration:
     width: 80
@@ -13975,13 +14070,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952307418}
-  m_LocalRotation: {x: 0.032420438, y: -0.8630967, z: 0.05586435, w: 0.50089145}
-  m_LocalPosition: {x: 0, y: 11.088487, z: -9.584446}
-  m_LocalScale: {x: 0.96586, y: 0.96586, z: 0.96586}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 34.920002, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.39400002, y: 0, z: 0}
 --- !u!1818360608 &1952307422
 PositionConstraint:
   m_ObjectHideFlags: 0
@@ -14018,9 +14113,7 @@ LookAtConstraint:
   m_IsContraintActive: 1
   m_IsLocked: 1
   m_Sources:
-  - sourceTransform: {fileID: 820860655}
-    weight: 0
-  - sourceTransform: {fileID: 902358804}
+  - sourceTransform: {fileID: 0}
     weight: 1
 --- !u!1 &1972959681 stripped
 GameObject:
@@ -14058,31 +14151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CAR (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+    - target: {fileID: 6955977140693926078, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1952307421}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: brain
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
-        type: 2}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: rangeFinderContainer
-      value: 
-      objectReference: {fileID: 1310866036}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: map
-      value: 
-      objectReference: {fileID: 1747564368}
-    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
-        type: 3}
-      propertyPath: TurnAngleWidthModifier
-      value: 2
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6955977140693834910, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
@@ -14139,6 +14211,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f665460087cbff40ad5af455b0f1934,
+        type: 2}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: rangeFinderContainer
+      value: 
+      objectReference: {fileID: 1310866036}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1747564368}
+    - target: {fileID: 554914568250132457, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: TurnAngleWidthModifier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537389901732324976, guid: fb6729a3e02718a46b9a6763a00fe8b9,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1952307421}
     - target: {fileID: 131969017460736196, guid: fb6729a3e02718a46b9a6763a00fe8b9,
         type: 3}
       propertyPath: maxRange
@@ -14176,6 +14274,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb6729a3e02718a46b9a6763a00fe8b9, type: 3}
+--- !u!1 &2137316126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8156643668497293669, guid: 65239cef3ae871346ab94396065c1255,
+    type: 3}
+  m_PrefabInstance: {fileID: 8156643667407290921}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1501171497862043853
 PrefabInstance:
   m_ObjectHideFlags: 0

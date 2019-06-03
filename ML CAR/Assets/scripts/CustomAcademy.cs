@@ -13,6 +13,9 @@ public class CustomAcademy : MonoBehaviour
     public int CarCount = 10;
 
     public int lapCount = 10;
+    public bool staticMode = false;
+    public Map staticMap;
+    public GameObject startCheckPoint;
     GameObject mg;
     // Start is called before the first frame update
     void Start()
@@ -23,13 +26,27 @@ public class CustomAcademy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (GameObject.FindGameObjectWithTag("mapGenerator").GetComponent<Map>().Passed >= lapCount)
+        if (MapGenerator)
         {
-            ResetPlayGround();
+            if (GameObject.FindGameObjectWithTag("mapGenerator").GetComponent<Map>().Passed >= lapCount)
+            {
+                ResetPlayGround();
+            }
+            else
+            {
+                FindBestCar();
+            }
         }else{
-            FindBestCar();
+            if (staticMap.Passed >= lapCount)
+            {
+                ResetPlayGround();
+            }
+            else
+            {
+                FindBestCar();
+            }
         }
+
         //Target The car with most Progress
     }
 
@@ -40,9 +57,25 @@ public class CustomAcademy : MonoBehaviour
         {
             DestroyImmediate(item);
         }
-        Destroy(GameObject.FindGameObjectWithTag("mapGenerator"));
-        mg = Instantiate(MapGenerator);
-        StartCoroutine("WaitForGeneration");
+        if (!staticMode)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("mapGenerator"));
+            mg = Instantiate(MapGenerator);
+            StartCoroutine("WaitForGeneration");
+        }
+        else
+        {
+            mg = staticMap.gameObject;
+            for (int i = 0; i < CarCount; i++)
+            {
+                GameObject car = Instantiate(Car);
+                car.GetComponent<CarAgent>().map = staticMap;
+                car.GetComponent<CarAgent>().ca = this;
+                car.GetComponent<CarAgent>().carStartPos = startCheckPoint.transform.position;
+                car.GetComponent<CarAgent>().carStartRotation = startCheckPoint.transform.rotation;
+            }
+        }
+
     }
     IEnumerator WaitForGeneration()
     {
@@ -81,27 +114,31 @@ public class CustomAcademy : MonoBehaviour
         sm.CarController = car.GetComponent<CarController>();
         sm.rangeFindersContainer = car.transform.Find("Detectors").gameObject;
     }
-    private void SetCameraToCar(GameObject car){
+    private void SetCameraToCar(GameObject car)
+    {
         UnityEngine.Animations.ConstraintSource cs = new UnityEngine.Animations.ConstraintSource();
         cs.sourceTransform = car.transform;
         cs.weight = 1;
         car.GetComponent<CarController>().mainCamera = chaseCamera;
         chaseCamera.gameObject.GetComponent<LookAtConstraint>().SetSource(0, cs);
     }
-    private void FindBestCar(){
+    private void FindBestCar()
+    {
         GameObject nowBestCar = null;
         float bestProgress = 0;
         foreach (GameObject item in GameObject.FindGameObjectsWithTag("car"))
         {
-            if(item.GetComponent<CarAgent>().carPorgress > bestProgress){
+            if (item.GetComponent<CarAgent>().carPorgress > bestProgress)
+            {
                 bestProgress = item.GetComponent<CarAgent>().carPorgress;
                 nowBestCar = item;
             }
         }
-        if(nowBestCar){
+        if (nowBestCar)
+        {
             SetMonitorToCar(nowBestCar);
-             SetCameraToCar(nowBestCar);
+            SetCameraToCar(nowBestCar);
         }
-        
+
     }
 }
